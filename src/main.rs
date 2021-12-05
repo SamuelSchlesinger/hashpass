@@ -11,6 +11,7 @@ fn hashpass(password: String, service: String) -> String {
     use sha3::Digest;
     let mut hasher = sha3::Keccak256::default();
     hasher.update(&password);
+    hasher.update(&service);
     readable(hasher.finalize().as_slice())
 }
 
